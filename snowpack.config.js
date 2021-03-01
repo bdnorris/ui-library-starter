@@ -11,6 +11,7 @@ module.exports = {
   ],
   packageOptions: {
     /* ... */
+    polyfillNode: false,
   },
   devOptions: {
     /* ... */
