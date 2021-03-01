@@ -1,0 +1,16 @@
+{
+  "name": "ui-library-starter",
+  "version": "0.1",
+  "description": "Dev environment for components and UI libraries with production ready builds.",
+  "main": "index.js",
+  "repository": "https://bitbucket.org/marlinnetwork/ui-library-starter",
+  "author": "Brian Norris",
+  "license": "private",
+  "dependencies": {
+    "snowpack": "^3.0.13"
+  },
+  "scripts": {
+    "start": "snowpack dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
