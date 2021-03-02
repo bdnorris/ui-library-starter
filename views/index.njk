@@ -7,6 +7,12 @@
     <title>Starter Snowpack App</title>
   </head>
   <body>
-    <h1>Welcome to Snowpack!</h1>
+	{% include "_head.njk" %}
+    <h1>Welcome to UI Library Kit</h1>
+		<a href="/">Home</a>
+		<a href="/test">Test</a>
+		<main>
+			{% block content %}{% endblock %}
+		</main>
   </body>
 </html>

@@ -1,0 +1,12 @@
+{% extends "views/index.njk" %}
+
+{% block content %}
+<h2>hey</h2>
+{% set items = ['dog', 'cat', 'rat', 'bat'] %}
+<ul>
+  {% for item in items %}
+  <li>{{ item }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+      
