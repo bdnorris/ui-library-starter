@@ -1,3 +1,6 @@
+const pluginSass = require("eleventy-plugin-sass");
+const sassPluginOptions = {};
+
 module.exports = function (eleventyConfig) {
 	eleventyConfig.setTemplateFormats([
 		'njk',
@@ -12,10 +15,11 @@ module.exports = function (eleventyConfig) {
 		'woff2'
 	]);
 	eleventyConfig.addPassthroughCopy('static');
+	eleventyConfig.addPlugin(pluginSass, sassPluginOptions);
 	return {
 		dir: {
-			input: "views",
-			includes: "views/_includes",
+			input: "src",
+			includes: "src/_includes",
 			output: "dist",
 		},
 	}
