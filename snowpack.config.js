@@ -5,8 +5,8 @@
 module.exports = {
   mount: {
     /* ... */
-    dist: "/",
-    static: "/"
+    dist: { url: '/', static: true },
+    src: { url: '/dist' },
   },
   plugins: [
     /* ... */
