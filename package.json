@@ -7,7 +7,8 @@
   "author": "Brian Norris",
   "license": "private",
   "dependencies": {
-    "snowpack": "^3.0.13"
+    "snowpack": "^3.0.13",
+    "snowpack-plugin-nunjucks": "^0.0.3"
   },
   "scripts": {
     "start": "snowpack dev",
