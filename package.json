@@ -5,8 +5,12 @@
   },
   "dependencies": {
     "@11ty/eleventy": "^0.11.1",
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "@snowpack/plugin-babel": "^2.1.6",
     "@snowpack/plugin-run-script": "^2.3.0",
     "eleventy-plugin-sass": "^1.2.0",
     "snowpack": "^3.0.13"
-  }
+  },
+  "browserslist": "> 0.25%, not dead"
 }

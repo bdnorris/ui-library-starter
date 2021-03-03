@@ -18,9 +18,9 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(pluginSass, sassPluginOptions);
 	return {
 		dir: {
-			input: "src",
-			includes: "src/_includes",
-			output: "dist",
+			input: '_template',
+			includes: '../_includes',
+			output: '_output',
 		},
 	}
 }
