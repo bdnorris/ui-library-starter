@@ -45,7 +45,7 @@ gulp.task("prod-styles", function() {
       ])
     )
     .pipe(cssnano({ reduceIdents: false, zindex: false })) // this helps prevent breaking animations // for mini-fying CSS, leaving off for now
-    .pipe(useStyleInject ? gulp.dest('src/scss') : gulp.dest("dist/")); // Outputs it in the root folder
+    .pipe(useStyleInject ? gulp.dest('src/scss') : gulp.dest("dist/styles/"));
 });
 
 // Styles task for development with sourcemaps `gulp`
@@ -55,7 +55,7 @@ gulp.task("sass", function() {
     .pipe(sourcemaps.init()) // Init sourcemaps
     .pipe(sass().on("error", sass.logError)) // Passes it through a gulp-sass, log errors to console
     .pipe(sourcemaps.write()) // Write it, it's embedded, making the file much larger. Should be turned off for Production
-    .pipe(useStyleInject ? gulp.dest('src/scss') : gulp.dest("dist"));
+    .pipe(useStyleInject ? gulp.dest('src/scss') : gulp.dest("dist/styles/"));
 });
 
 gulp.task("images", function() {
