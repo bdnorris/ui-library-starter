@@ -23,7 +23,8 @@ const path = {
   entry: "src/js/index.js",
   js: "src/js/**/*.js",
   images: "src/images/*",
-  nunjucks: "src/nunjucks/**/*.njk"
+  nunjucks: "src/nunjucks/**/*.njk",
+  static: "static/**/*.*"
 };
 
 // Styles task for production `gulp styles`
@@ -99,6 +100,10 @@ gulp.task("js", function() {
     .pipe(gulp.dest("dist/js"));
 });
 
+gulp.task("static", function() {
+  return gulp.src(path.static).pipe(gulp.dest("dist/"));
+})
+
 // Static Server + watching all our files
 gulp.task("watch", function() {
   browserSync.init({
@@ -120,8 +125,8 @@ gulp.task("clean", function() {
 
 // Build `gulp build`
 // ! Build for production then stop
-gulp.task("build", gulp.series("clean", "nunjucks", "images", "prod-styles", "js"));
+gulp.task("build", gulp.series("clean", "nunjucks", "images", "prod-styles", "js", "static"));
 
 // Default `gulp`
 // ! Build for development then watch
-gulp.task("default", gulp.series("clean", "nunjucks", "images", "sass", "js", "watch"));
+gulp.task("default", gulp.series("clean", "nunjucks", "images", "sass", "js", "static", "watch"));
