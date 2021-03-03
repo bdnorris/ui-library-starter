@@ -1,3 +1,40 @@
-<div>data:
-{{ data }}
-</div>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{# Open Graph #}
+		<meta property="og:title" content="">
+		<meta property="og:type" content="">
+		<meta property="og:url" content="">
+		<meta property="og:image" content="">
+
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<!-- Place favicon.ico in the root directory -->
+
+		<meta name="theme-color" content="#fafafa">
+		<link href="/style.css" rel="stylesheet">
+	</head>
+	<body>
+	<header>
+		{% block header %}
+		This is the default content!
+		data: {{ data }}
+		{% endblock %}
+		<h1>Welcome</h1>
+		<h2>heading 2</h2>
+	</header>
+	<section class="left">
+		{% block left %}{% endblock %}
+	</section>
+
+	<section class="right">
+		{% block right %}
+		This is more content
+		{% endblock %}
+	</section>
+		<script src="/js/main.js"></script>
+	</body>
+</html>

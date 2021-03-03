@@ -100,8 +100,9 @@ gulp.task("js", function() {
 });
 
 // Static Server + watching all our files
-gulp.task("serve", function() {
+gulp.task("watch", function() {
   browserSync.init({
+    injectChanges: true,
     server: {
       baseDir: "./dist"
     }
@@ -123,4 +124,4 @@ gulp.task("build", gulp.series("clean", "nunjucks", "images", "prod-styles", "js
 
 // Default `gulp`
 // ! Build for development then watch
-gulp.task("default", gulp.series("clean", "nunjucks", "images", "sass", "js", "serve"));
+gulp.task("default", gulp.series("clean", "nunjucks", "images", "sass", "js", "watch"));
