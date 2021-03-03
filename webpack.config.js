@@ -1,17 +1,13 @@
 // webpack.config.js
 
 module.exports = {
-  // output: {
-  //   filename: "[name].bundle.js",
-  // },
-  // entry: {
-  //   index: './js/index.js',
-  //   home: './js/home.js',
-  //   "about-our-company": './js/about-our-company.js',
-  //   "join-our-team": './js/join-our-team.js',
-  //   "contact-us": './js/contact-us.js',
-  //   redirect: './js/redirect.js'
-  // },
+  output: {
+    filename: "[name].bundle.js",
+  },
+  entry: {
+    library: './src/js/library/library.js',
+    "ui-kit": './src/js/ui-kit/ui-kit.js'
+  },
   module: {
     rules: [
       {

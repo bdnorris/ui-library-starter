@@ -20,8 +20,8 @@ const useStyleInject = false;
 
 const path = {
   sass: "src/scss/**/*.scss",
-  entry: "src/js/index.js",
-  js: "src/js/**/*.js",
+  // entry: "src/js/index.js",
+  js: ["src/js/library/*.js", "src/js/ui-kit/*.js"],
   images: "src/images/*",
   nunjucks: [
     "src/nunjucks/**/*",         //select all files
@@ -45,7 +45,7 @@ gulp.task("prod-styles", function() {
       ])
     )
     .pipe(cssnano({ reduceIdents: false, zindex: false })) // this helps prevent breaking animations // for mini-fying CSS, leaving off for now
-    .pipe(useStyleInject ? gulp.dest('src/scss') : gulp.dest("dist/styles/"));
+    .pipe(useStyleInject ? gulp.dest(path.sass) : gulp.dest("dist/styles/"));
 });
 
 // Styles task for development with sourcemaps `gulp`
@@ -55,7 +55,7 @@ gulp.task("sass", function() {
     .pipe(sourcemaps.init()) // Init sourcemaps
     .pipe(sass().on("error", sass.logError)) // Passes it through a gulp-sass, log errors to console
     .pipe(sourcemaps.write()) // Write it, it's embedded, making the file much larger. Should be turned off for Production
-    .pipe(useStyleInject ? gulp.dest('src/scss') : gulp.dest("dist/styles/"));
+    .pipe(useStyleInject ? gulp.dest(path.sass) : gulp.dest("dist/styles/"));
 });
 
 gulp.task("images", function() {
@@ -97,10 +97,10 @@ gulp.task("nunjucks", function() {
 
 gulp.task("js", function() {
   return gulp
-    .src(path.entry)
+    .src(path.js)
     .pipe(webpackStream(webpackConfig))
-    .pipe(concat("main.js"))
-    .pipe(gulp.dest("dist/js"));
+    // .pipe(concat("main.js"))
+    .pipe(gulp.dest("dist/js/"));
 });
 
 gulp.task("static", function() {
