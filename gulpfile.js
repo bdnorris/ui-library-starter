@@ -11,10 +11,8 @@ const concat = require("gulp-concat");
 const webpackStream = require("webpack-stream");
 const webpackConfig = require("./webpack.config.js"); // webpack config file in root
 const clean = require("gulp-clean");
-const pug = require("gulp-pug");
+const nunjucks = require('gulp-nunjucks');
 const styleInject = require("gulp-style-inject");
-
-const usePug = true;
 
 const useStyleInject = false;
 // REPLACE Style import from the default layout if you want to use style injection instead
@@ -22,11 +20,10 @@ const useStyleInject = false;
 
 const path = {
   sass: "src/scss/**/*.scss",
-  html: "src/html/**/*.html",
   entry: "src/js/index.js",
   js: "src/js/**/*.js",
   images: "src/images/*",
-  pug: "src/pug/**/*.pug"
+  nunjucks: "src/nunjucks/**/*.njk"
 };
 
 // Styles task for production `gulp styles`
@@ -43,7 +40,7 @@ gulp.task("prod-styles", function() {
         })
       ])
     )
-    .pipe(cssnano({ reduceIdents: false })) // this helps prevent breaking animations // for mini-fying CSS, leaving off for now
+    .pipe(cssnano({ reduceIdents: false, zindex: false })) // this helps prevent breaking animations // for mini-fying CSS, leaving off for now
     .pipe(useStyleInject ? gulp.dest('src/scss') : gulp.dest("dist/")); // Outputs it in the root folder
 });
 
@@ -64,30 +61,14 @@ gulp.task("images", function() {
     .pipe(gulp.dest("./dist/images"));
 });
 
-// * for html task if you don't want to use pug
-gulp.task("html", function() {
+gulp.task("nunjucks", function() {
   if (useStyleInject) {
     return gulp
-      .src(path.html)
+      .src(path.nunjucks)
       .pipe(
-        styleInject({
-          encapsulated: true,
-          path: './src/scss/'
-        })
-      )
-      .pipe(gulp.dest("dist/"));
-  } else {
-    return gulp.src(path.html).pipe(gulp.dest("dist/"));
-  }
-});
-
-gulp.task("pug", function() {
-  if (useStyleInject) {
-    return gulp
-      .src(path.pug)
-      .pipe(
-        pug({
-          /* options */
+        nunjucks.compile({
+          /* options or data */
+          data: 'test'
         })
       )
       .pipe(
@@ -99,10 +80,11 @@ gulp.task("pug", function() {
       .pipe(gulp.dest("dist/"));
   } else {
     return gulp
-      .src(path.pug)
+      .src(path.nunjucks)
       .pipe(
-        pug({
+        nunjucks.compile({
           /* options */
+          data: 'test'
         })
       )
       .pipe(gulp.dest("dist/"));
@@ -126,11 +108,7 @@ gulp.task("serve", function() {
   });
 
   gulp.watch(path.sass, gulp.series("sass")).on("change", browserSync.reload);
-  if (usePug) {
-    gulp.watch(path.pug, gulp.series("pug")).on("change", browserSync.reload);
-  } else {
-    gulp.watch(path.html, gulp.series("html")).on("change", browserSync.reload);
-  }
+  gulp.watch(path.nunjucks, gulp.series("nunjucks")).on("change", browserSync.reload);
   gulp.watch(path.js, gulp.series("js")).on("change", browserSync.reload);
   gulp.watch(path.images, gulp.series("images")).on("change", browserSync.reload);
 });
@@ -141,22 +119,8 @@ gulp.task("clean", function() {
 
 // Build `gulp build`
 // ! Build for production then stop
-if (usePug) {
-  gulp.task("build", gulp.series("clean", "pug", "images", "prod-styles", "js"));
-} else {
-  gulp.task("build", gulp.series("clean", "html", "images", "prod-styles", "js"));
-}
+gulp.task("build", gulp.series("clean", "nunjucks", "images", "prod-styles", "js"));
 
 // Default `gulp`
-// ! Build for development then serve
-if (usePug) {
-  gulp.task(
-    "default",
-    gulp.series("clean", "pug", "images", "sass", "js", "serve")
-  );
-} else {
-  gulp.task(
-    "default",
-    gulp.series("clean", "html", "images", "sass", "js", "serve")
-  );
-}
+// ! Build for development then watch
+gulp.task("default", gulp.series("clean", "nunjucks", "images", "sass", "js", "serve"));
