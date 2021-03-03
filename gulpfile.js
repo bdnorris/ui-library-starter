@@ -21,7 +21,7 @@ const useStyleInject = false;
 const path = {
   sass: "src/scss/**/*.scss",
   // entry: "src/js/index.js",
-  js: ["src/js/library/*.js", "src/js/ui-kit/*.js"],
+  js: ["src/js/library/**/*.js", "src/js/ui-kit/**/*.js"],
   images: "src/images/*",
   nunjucks: [
     "src/nunjucks/**/*",         //select all files
