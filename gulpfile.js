@@ -23,7 +23,10 @@ const path = {
   entry: "src/js/index.js",
   js: "src/js/**/*.js",
   images: "src/images/*",
-  nunjucks: "src/nunjucks/**/*.njk",
+  nunjucks: [
+    "src/nunjucks/**/*",         //select all files
+    "!src/nunjucks/_*/**",      //exclude folders starting with '_'
+  ],
   static: "static/**/*.*"
 };
 
