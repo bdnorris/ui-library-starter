@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+	{% include "_includes/_head.njk" %}
+	<body>
+		{% include "_includes/_panel.njk" %}
+		<main>
+			{% block body %}{% endblock %}
+		</main>
+		<script src="/js/ui-kit.bundle.js"></script>
+		<script src="/js/library.bundle.js"></script>
+	</body>
+</html>

@@ -1,19 +1,10 @@
-<!doctype html>
-<html lang="en">
-	{% include "_includes/_head.njk" %}
-	<body>
-	<header>
-		{% block header %}
-		This is the default content!
-		data: {{ data }}
-		{% endblock %}
-		<h1>Welcome</h1>
-		<h2>heading 2</h2>
-	</header>
-	<section class="left">
-		{% block left %}{% endblock %}
-	</section>
-		<script src="/js/ui-kit.bundle.js"></script>
-		<script src="/js/library.bundle.js"></script>
-	</body>
-</html>
+{% extends "template.njk" %}
+
+{% block body %}
+	<h1>UI Kit</h1>
+	<nav>
+		<ul>
+			{% include "_includes/_navigation.njk" %}
+		</ul>
+	</nav>
+{% endblock %}
