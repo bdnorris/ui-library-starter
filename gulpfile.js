@@ -23,10 +23,13 @@ const path = {
   // entry: "src/js/index.js",
   js: ["src/js/library/**/*.js", "src/js/ui-kit/**/*.js"],
   images: "src/images/*",
-  nunjucks: [
-    "src/nunjucks/**/*",         //select all files
-    "!src/nunjucks/_*/**",      //exclude folders starting with '_'
-  ],
+  nunjucks: {
+    compile: [
+      "src/nunjucks/**/*.njk",         //select all files
+      "!src/nunjucks/_*/**",      //exclude folders starting with '_'
+    ],
+    watch: "src/nunjucks/**/*.njk"
+  },
   static: "static/**/*.*"
 };
 
@@ -68,7 +71,7 @@ gulp.task("images", function() {
 gulp.task("nunjucks", function() {
   if (useStyleInject) {
     return gulp
-      .src(path.nunjucks)
+      .src(path.nunjucks.compile)
       .pipe(
         nunjucks.compile({
           /* options or data */
@@ -84,7 +87,7 @@ gulp.task("nunjucks", function() {
       .pipe(gulp.dest("dist/"));
   } else {
     return gulp
-      .src(path.nunjucks)
+      .src(path.nunjucks.compile)
       .pipe(
         nunjucks.compile({
           /* options */
@@ -111,13 +114,14 @@ gulp.task("static", function() {
 gulp.task("watch", function() {
   browserSync.init({
     injectChanges: true,
+    port: 3002,
     server: {
       baseDir: "./dist"
     }
   });
 
   gulp.watch(path.sass, gulp.series("sass")).on("change", browserSync.reload);
-  gulp.watch(path.nunjucks, gulp.series("nunjucks")).on("change", browserSync.reload);
+  gulp.watch(path.nunjucks.watch, gulp.series("nunjucks")).on("change", browserSync.reload);
   gulp.watch(path.js, gulp.series("js")).on("change", browserSync.reload);
   gulp.watch(path.images, gulp.series("images")).on("change", browserSync.reload);
 });
