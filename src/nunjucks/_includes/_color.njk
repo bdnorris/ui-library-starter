@@ -1,0 +1,17 @@
+{%
+	set colors = {
+		'red': '#931621',
+		'indigo': '#28464B'
+	}
+%}
+
+<ul>
+{% for color, value in colors %}
+	<li>
+		<div style="background-color: {{ value }}">
+			{{ color }}
+			{{ value }}
+		</div>
+	</li>
+{% endfor %}
+</ul>

@@ -2,9 +2,27 @@
 
 {% block body %}
 	<h1>UI Kit</h1>
-	<nav>
+	<nav aria-label="Home Page Navigation">
 		<ul>
 			{% include "_includes/_navigation.njk" %}
 		</ul>
 	</nav>
+	<section>
+		<h2>Overview</h2>
+		<p>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quam natus optio nostrum totam, eius veniam non sunt! Inventore reprehenderit sapiente iure aperiam doloribus ea nostrum quasi perferendis doloremque officia.
+		</p>
+	</section>
+	<section>
+		<h2>Usage</h2>
+		Use /js/library.bundle.js in your project
+		Use /styles/library/library.css in your project
+	</section>
+	<section>
+		<h2>Color</h2>
+		{% include "_includes/_color.njk" %}
+	</section>
+	<section>
+		<h2>Typography</h2>
+	</section>
 {% endblock %}
