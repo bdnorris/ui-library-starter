@@ -6,17 +6,11 @@ const autoprefixer = require("autoprefixer");
 const cssnano = require("gulp-cssnano");
 const browserSync = require("browser-sync").create();
 const imagemin = require("gulp-imagemin");
-const concat = require("gulp-concat");
 // https://www.npmjs.com/package/webpack-stream
 const webpackStream = require("webpack-stream");
 const webpackConfig = require("./webpack.config.js"); // webpack config file in root
 const clean = require("gulp-clean");
 const nunjucks = require('gulp-nunjucks');
-const styleInject = require("gulp-style-inject");
-
-const useStyleInject = false;
-// REPLACE Style import from the default layout if you want to use style injection instead
-// PUT this in it's place: <!-- inject-style src="style.css" -->
 
 const path = {
   sass: "src/scss/**/*.scss",
@@ -48,7 +42,7 @@ gulp.task("prod-styles", function() {
       ])
     )
     .pipe(cssnano({ reduceIdents: false, zindex: false })) // this helps prevent breaking animations // for mini-fying CSS, leaving off for now
-    .pipe(useStyleInject ? gulp.dest(path.sass) : gulp.dest("dist/styles/"));
+    .pipe(gulp.dest("dist/styles/"));
 });
 
 // Styles task for development with sourcemaps `gulp`
@@ -58,7 +52,7 @@ gulp.task("sass", function() {
     .pipe(sourcemaps.init()) // Init sourcemaps
     .pipe(sass().on("error", sass.logError)) // Passes it through a gulp-sass, log errors to console
     .pipe(sourcemaps.write()) // Write it, it's embedded, making the file much larger. Should be turned off for Production
-    .pipe(useStyleInject ? gulp.dest(path.sass) : gulp.dest("dist/styles/"));
+    .pipe(gulp.dest("dist/styles/"));
 });
 
 gulp.task("images", function() {
@@ -69,33 +63,15 @@ gulp.task("images", function() {
 });
 
 gulp.task("nunjucks", function() {
-  if (useStyleInject) {
-    return gulp
-      .src(path.nunjucks.compile)
-      .pipe(
-        nunjucks.compile({
-          /* options or data */
-          data: 'test'
-        })
-      )
-      .pipe(
-        styleInject({
-          encapsulated: true,
-          path: './dist/'
-        })
-      )
-      .pipe(gulp.dest("dist/"));
-  } else {
-    return gulp
-      .src(path.nunjucks.compile)
-      .pipe(
-        nunjucks.compile({
-          /* options */
-          data: 'test'
-        })
-      )
-      .pipe(gulp.dest("dist/"));
-  }
+  return gulp
+    .src(path.nunjucks.compile)
+    .pipe(
+      nunjucks.compile({
+        /* options */
+        data: 'test'
+      })
+    )
+    .pipe(gulp.dest("dist/"));
 });
 
 gulp.task("js", function() {
