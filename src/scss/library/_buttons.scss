@@ -1,5 +1,10 @@
 button {
   @include button-reset;
+  background-color: $clickable;
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+  color: white;
+  border-radius: 0.25em;
 }
 
 .button {
