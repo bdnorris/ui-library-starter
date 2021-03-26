@@ -32,3 +32,37 @@ main {
 	border: 2px solid rebeccapurple;
 	padding: 1em;
 }
+
+nav {
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.color-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.color-list__swatch {
+	padding: 0.5em;
+	background-color: white;
+	border: 1px solid gray;
+	font-size: 0.75em;
+	width: 10em;
+	margin: 0 1em 1em 0;
+	& > div:first-child {
+		// height: 4em;
+		padding-bottom: 100%;
+		// margin-bottom: 0.5em;
+		line-height: 1.2;
+	}
+	& > div {
+		padding-top: 0.333em;
+	}
+}

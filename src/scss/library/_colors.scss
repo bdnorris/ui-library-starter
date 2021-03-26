@@ -1,20 +1,33 @@
-$red: #931621;
-$indigo: #28464B;
-$green: #2C8C99;
-$dgreen: #326771;
-$turquoise: #42D9C8;
+$bittersweet: #fe615d;
+$deep-saffron: #fe9234;
+$midnight-green: #0f4d52;
+$middle-blue-green: #7adcd4;
+$beaver: hsla(29, 25%, 55%, 1);
+$alabaster: hsla(43, 21%, 87%, 1);
+$spanish-gray: hsla(102, 5%, 58%, 1);
+$rifle-green: hsla(66, 26%, 22%, 1);
 
-$black: #0E1111;
-$dgray: #232828;
-$gray: #444D4F;
-$lgray: #9EAFB2;
-$llgray: #DEE2E2;
+// Cool Grays
+$text:         hsl(200, 10%, 15%);
+$text-light:   hsl(200, 8%, 30%);
+$ddgray:  hsl(200, 9%, 20%);
+$dgray:    hsl(200, 7%, 37%);
+$gray:         hsl(200, 4%, 50%);
+$lgray:   hsl(200, 3%, 70%);
+$llgray: hsl(200, 1%, 93%);
+
+// Warm Grays
+// $text:         hsl(40, 10%, 15%);
+// $text-light:   hsl(40, 8%, 30%);
+// $ddgray:  hsl(40, 9%, 20%);
+// $dgray:    hsl(40, 7%, 37%);
+// $gray:         hsl(40, 4%, 50%);
+// $lgray:   hsl(40, 3%, 70%);
+// $llgray: hsl(40, 1%, 93%);
 
 /* aliases */
-$text: $dgray;
-$text-light: $gray;
-$error: $red;
-$primary: $indigo;
-$secondary: $green;
-$clickable: $red;
-$clickable-hover: lighten($red, 20%);
+$error: $bittersweet;
+$primary: $middle-blue-green;
+$secondary: $midnight-green;
+$clickable: $bittersweet;
+$clickable-hover: lighten($clickable, 20%);
