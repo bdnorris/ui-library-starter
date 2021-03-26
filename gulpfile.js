@@ -89,7 +89,7 @@ gulp.task("static", function() {
 // Static Server + watching all our files
 gulp.task("watch", function() {
   browserSync.init({
-    injectChanges: true,
+    injectChanges: false,
     port: 3002,
     server: {
       baseDir: "./dist"
