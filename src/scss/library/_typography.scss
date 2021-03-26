@@ -9,7 +9,7 @@ h1, .h1 {
   font-family: $sans;
   font-weight: 800;
   line-height: 1.25;
-  letter-spacing: -1.5px;
+  letter-spacing: -0.5px;
   font-size: em(32);
   @include breakpoint(large) {
     font-size: em(40);

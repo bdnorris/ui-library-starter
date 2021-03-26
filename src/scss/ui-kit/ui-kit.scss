@@ -1,15 +1,27 @@
+@import '../library/_colors';
+
 .panel {
-	background-color: slateblue;
+	background-color: $primary;
 	width: 300px;
 	position: fixed;
 	top: 0;
 	bottom: 0;
 	left: 0;
-	transform: translateX(calc(-300px + 30px));
+	transform: translateX(calc(-300px + 40px));
 	transition: transform 300ms ease;
+	padding: 2em;
+	h1 {
+		font-size: 2em;
+		// text-align: center;
+	}
 	&.active {
 		transform: translateX(0);
 	}
+}
+
+.panel__logo {
+	max-width: 200px;
+	margin: 1em auto;
 }
 
 .panel__control {
@@ -18,7 +30,7 @@
 	right: 0.333em;
 	width: 1.25em;
 	height: 1.25em;
-	background-color: red;
+	background-color: $clickable;
 }
 
 main {
@@ -29,15 +41,26 @@ main {
 	// background-color: rebeccapurple;
 }
 .component__component {
-	border: 2px solid rebeccapurple;
+	border: 2px solid $secondary;
 	padding: 1em;
 }
 
-nav {
+.panel__nav {
 	ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
+		display: flex;
+		flex-direction: column;
+		// align-items: center;
+		li {
+			a {
+				color: $clickable;
+				font-size: 1.5em;
+				padding: 0.3em 0.25em 0.4em 0;
+				display: block;
+			}
+		}
 	}
 }
 
@@ -52,7 +75,7 @@ nav {
 .color-list__swatch {
 	padding: 0.5em;
 	background-color: white;
-	border: 1px solid gray;
+	border: 1px solid $gray;
 	font-size: 0.75em;
 	width: 10em;
 	margin: 0 1em 1em 0;
