@@ -1,0 +1,33 @@
+$bittersweet: #fe615d;
+$deep-saffron: #fe9234;
+$midnight-green: #0f4d52;
+$middle-blue-green: #7adcd4;
+$beaver: #a98b70;
+$alabaster: #e5e1d7;
+$spanish-gray: #92998f;
+$rifle-green: #44472a;
+
+// Cool Grays
+$text:         #22282a;
+$text-light:   #464f53;
+$ddgray:  #2e3538;
+$dgray:    #586165;
+$gray:         #7a8185;
+$lgray:   #b0b3b5;
+$llgray: #ededed;
+
+// Warm Grays
+// $text:         hsl(40, 10%, 15%);
+// $text-light:   hsl(40, 8%, 30%);
+// $ddgray:  hsl(40, 9%, 20%);
+// $dgray:    hsl(40, 7%, 37%);
+// $gray:         hsl(40, 4%, 50%);
+// $lgray:   hsl(40, 3%, 70%);
+// $llgray: hsl(40, 1%, 93%);
+
+/* aliases */
+$error: $bittersweet;
+$primary: $middle-blue-green;
+$secondary: $midnight-green;
+$clickable: $bittersweet;
+$clickable-hover: lighten($clickable, 20%);

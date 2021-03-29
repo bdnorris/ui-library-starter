@@ -1,0 +1,164 @@
+@import '../library/colors';
+@import '../library/mixins';
+@import '../library/variables';
+@import '../library/vendor/index';
+
+.panel {
+	background-color: $primary;
+	width: 100%;
+	position: fixed;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	right: 0;
+	transform: translateY(calc(-100vh + 40px));
+	transition: transform 300ms ease;
+	padding: 0.75em;
+	h1 {
+		font-size: 2em;
+		// text-align: center;
+	}
+	&.active {
+		transform: translateX(0);
+	}
+	@include breakpoint(large) {
+		width: 300px;
+		height: auto;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: auto;
+		transform: translateX(calc(-300px + 40px));
+		padding: 2em;
+	}
+}
+
+.panel__logo {
+	max-width: 100px;
+	margin: 1em auto;
+	@include breakpoint(large) {
+		max-width: 200px;
+	}
+}
+
+.panel__control {
+	@include button-reset;
+	position: absolute;
+	bottom: 8px;
+	right: 8px;
+	width: 1.5rem;
+	height: 1.5rem;
+	background-color: $clickable;
+	svg {
+		path {
+			fill: white;
+		}
+	}
+	svg:first-child {
+		display: block;
+	}
+	svg:last-child {
+		display: none;
+	}
+	&[aria-expanded = 'true'] {
+		top: 8px;
+		bottom: auto;
+		svg:first-child {
+			display: none;
+		}
+		svg:last-child {
+			display: block;
+		}
+	}
+	@include breakpoint(large) {
+		top: 8px;
+		right: 8px;
+	}
+}
+
+main {
+	padding: 2em 1.5em 1.5em 1.5em;
+	@include breakpoint(large) {
+		padding: 2em 2em 2em 4em;
+	}
+}
+
+.component {
+	// background-color: rebeccapurple;
+	width: 100%;
+	margin: 0;
+}
+.component__component {
+	// border: 2px solid $secondary;
+	background-color: white;
+	padding: 0;
+	// margin: 0 -1.5em;
+}
+
+.panel__nav {
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		// align-items: center;
+		li {
+			a {
+				color: $clickable;
+				font-size: 1.5em;
+				padding: 0.3em 0.25em 0.4em 0;
+				display: block;
+			}
+		}
+	}
+}
+.header-nav {
+	ul {
+		list-style: none;
+		margin: 0 0 0 4em;
+		padding: 0.25em;
+		display: none;
+		flex-direction: row;
+		background-color: $secondary;
+		li {
+			a {
+				color: $clickable;
+				font-size: 1.5em;
+				padding: 0.3em 0.5em 0.4em 0.5em;
+				display: block;
+			}
+		}
+	}
+	@include breakpoint(large) {
+		ul {
+			display: flex;
+		}
+	}
+}
+
+.color-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.color-list__swatch {
+	padding: 0.5em;
+	background-color: white;
+	border: 1px solid $gray;
+	font-size: 0.75em;
+	width: 10em;
+	margin: 0 1em 1em 0;
+	& > div:first-child {
+		// height: 4em;
+		padding-bottom: 100%;
+		// margin-bottom: 0.5em;
+		line-height: 1.2;
+	}
+	& > div {
+		padding-top: 0.333em;
+	}
+}

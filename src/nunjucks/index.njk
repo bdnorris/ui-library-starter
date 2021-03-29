@@ -1,0 +1,28 @@
+{% extends "template.njk" %}
+
+{% block body %}
+	<h1>UI Libary Starter</h1>
+	<section>
+		<h2>Overview</h2>
+		<p>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quam natus optio nostrum totam, eius veniam non sunt! Inventore reprehenderit sapiente iure aperiam doloribus ea nostrum quasi perferendis doloremque officia.
+		</p>
+	</section>
+	<section>
+		<h2>Usage</h2>
+		<p>
+			Use <pre>/js/library.bundle.js</pre>
+		</p>
+		<p>
+			and <pre>/styles/library/library.css</pre> in your project
+		</p>
+	</section>
+	<section>
+		<h2>Color</h2>
+		{% include "_includes/_color.njk" %}
+	</section>
+	<section>
+		<h2>Typography</h2>
+		{% include "_includes/_typography.njk" %}
+	</section>
+{% endblock %}

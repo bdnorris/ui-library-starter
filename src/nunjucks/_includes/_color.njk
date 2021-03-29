@@ -1,0 +1,47 @@
+{% set colors = {
+	'Bittersweet': '#fe615d',
+	'Deep Saffron': '#fe9234',
+	'Midnight Green': '#0f4d52',
+	'Middle Blue Green': '#7adcd4',
+	'Beaver': '#a98b70',
+	'Alabaster': '#e5e1d7',
+	'Spanish Gray': '#92998f',
+	'Rifle Green': '#44472a'
+} %}
+{% set grays = {
+	'Text': '#22282a',
+	'Text Light': '#464f53',
+	'Very Dark Gray': '#2e3538',
+	'Dark Gray': '#586165',
+	'Gray': '#7a8185',
+	'Light Gray': '#b0b3b5',
+	'Very Light Gray': '#ededed'
+} %}
+
+<h3>Colors</h3>
+<ul class="color-list">
+	{% for color, value in colors %}
+		<li>
+			<div class="color-list__swatch">
+				<div style="background-color: {{ value }}">
+				</div>
+				<div>{{ color }}</div>
+				<div>{{ value }}</div>
+			</div>
+		</li>
+	{% endfor %}
+</ul>
+
+<h3>Grays</h3>
+<ul class="color-list">
+	{% for gray, value in grays %}
+		<li>
+			<div class="color-list__swatch">
+				<div style="background-color: {{ value }}">
+				</div>
+				<div>{{ gray }}</div>
+				<div>{{ value }}</div>
+			</div>
+		</li>
+	{% endfor %}
+</ul>
