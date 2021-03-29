@@ -1,7 +1,7 @@
 {
-  "name": "brians-sass-only-gulp",
+  "name": "ui-library-starter",
   "version": "1.1.0",
-  "description": "Basic sass gulp",
+  "description": "Toolkit for building a front-end library to integrate with other systems.",
   "main": "/",
   "scripts": {
     "dev": "gulp",
