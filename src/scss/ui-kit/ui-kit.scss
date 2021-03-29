@@ -7,7 +7,7 @@
 @import 'panel';
 @import 'color-list';
 
-main {
+main.ui-kit {
 	padding: 2em 1.5em 1.5em 1.5em;
 	@include breakpoint(large) {
 		padding: 2em 2em 2em 4em;
