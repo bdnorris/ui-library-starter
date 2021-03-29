@@ -12,6 +12,8 @@ const webpackConfig = require("./webpack.config.js"); // webpack config file in 
 const clean = require("gulp-clean");
 const nunjucks = require('gulp-nunjucks');
 
+sass.compiler = require('node-sass');
+
 const path = {
   sass: "src/scss/**/*.scss",
   // entry: "src/js/index.js",

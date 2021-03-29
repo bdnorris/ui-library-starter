@@ -20,17 +20,19 @@ Also note that the way components are shown here may give a false impression reg
 
 `yarn build` to build styles for production and stop.
 
+[BrowserSync](https://browsersync.io/)
+
 ## Using this Kit
 
-This kit uses gulp and webpack to compile your Scss and JS files to compressed bundles that you can use in your other projects and CMS setups. It uses (https://mozilla.github.io/nunjucks/)[nunjucks] for templating. 
+This kit uses gulp and webpack to compile your Scss and JS files to compressed bundles that you can use in your other projects and CMS setups. It uses [nunjucks](https://mozilla.github.io/nunjucks/) for templating. 
 
 All your files will be in the `src` directory. 
 
 ### Atoms, Molecules, Organisms, and folders
 
-Out of the box, we're using [Atomic Design Terminology](). But you can absolutely change these folders.
+Out of the box, we're using [Atomic Design Terminology](https://bradfrost.com/blog/post/atomic-web-design/). But you can absolutely change these folders.
 
-In the `src` directory, under `nunjucks`, you'll find folders that start with an `_` and folders that don't. The folders with `_` are partial nunjucks templates that only get rendered inside other nunjucks files. Folders without the `_` get rendered to the `/dist/` folder as actual HTML files, including the folders, so these can represent your routes. 
+In the `src` directory, under `nunjucks`, you'll find folders that start with an `_` and folders that don't. The folders with `_` are partial Nunjucks templates that only get rendered inside other Nunjucks files. Folders without the `_` get rendered to the `/dist/` folder as actual HTML files, including the folders, so these can represent your routes. 
 
 `_atoms`: is where you put your individual pieces of UI.
 `_includes`: is where partials for the UI Kit live, these do not represent anything in your Library.
@@ -54,6 +56,12 @@ New files will need to be included near the closing body tag of the main templat
 
 Note that the styles do require a different command for production builds as noted above. 
 
+- [Gulp-Sass](https://www.npmjs.com/package/gulp-sass)
+- [Postcss](https://github.com/postcss/gulp-postcss)
+- [Autoprefixer](https://www.npmjs.com/package/autoprefixer)
+- [Sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps)
+- [CSSNano](https://www.npmjs.com/package/gulp-cssnano)
+
 ## Webfonts and Miscellaneous Files
 
 Webfonts and other static files are the trickiest thing in this process as routes to those files set in your CSS may not work with the system you're integrating with. I don't have a great solve for this other than to adapt this tool to your projects needs rather than the other way around.
@@ -71,8 +79,8 @@ Javascript files are processed by Gulp through the Gulp `webpack-stream` plugin.
 
 Note that using this kit that certain things may not work via javascript and will have to be tested in your actual project (like analytics). 
 
-Core-js is included as a dependency, but note that you should only include these polyfills in your bundle if you actually need them. 
+[Core-js](https://github.com/zloirock/core-js) is included as a dependency, but note that you should only include these polyfills in your bundle if you actually need them. 
 
-Webpack settings are controlled via a `webpack.config.js` in the root of this project. There you will note the entrypoints of `library.js` and `uikit.js`. However, you can always add more if you want to split up your code by adding entry point files in `/src/js` and then adding them to this config file (they'll need to be included near the closing body tag of the main templates and any pages you make). 
+[Webpack](https://webpack.js.org/) settings are controlled via a `webpack.config.js` in the root of this project. There you will note the entry-points of `library.js` and `uikit.js`. However, you can always add more if you want to split up your code by adding entry point files in `/src/js` and then adding them to this config file (they'll need to be included near the closing body tag of the main templates and any pages you make). 
 
-Note that by default JS builds are for production regardless of whether you run the `build` or the `dev` commands.
+Note that by default JS builds are for production regardless of whether you run the `build` or the `dev` commands. But, the gulp-sourcemaps library does support JS files as well.
