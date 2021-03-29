@@ -14,6 +14,12 @@ While the JS and CSS files are separate, they are both included when you run thi
 
 Also note that the way components are shown here may give a false impression regarding margins, max-widths, positioning, etc. Use the Pages feature to vet your components in a more "raw" environment.
 
+## Getting Started
+
+`yarn dev` or `npm dev` to build, watch, and run browsersync.
+
+`yarn build` to build styles for production and stop.
+
 ## Using this Kit
 
 This kit uses gulp and webpack to compile your Scss and JS files to compressed bundles that you can use in your other projects and CMS setups. It uses (https://mozilla.github.io/nunjucks/)[nunjucks] for templating. 
@@ -39,11 +45,34 @@ In the `src` directory, under `nunjucks`, you'll find folders that start with an
 
 ### Pages
 
+Pages get rendered to HTML files without any UI Kit templating or dependencies to allow you to view organisms together without any interference.
 ## Sass
 
-## Webfonts
+Scss files are rendered using gulp-sass, postcss (w/ autoprefixer), optional sourcemaps, and cssnano into one "Library" file. But that's the default, this is all configurable via the gulp file, and if you want to split your CSS code into more files, this is also doable by adding another `.scss` file without an underscore in `/src/scss/library/`. 
 
+New files will need to be included near the closing body tag of the main templates and any pages you make. 
+
+Note that the styles do require a different command for production builds as noted above. 
+
+## Webfonts and Miscellaneous Files
+
+Webfonts and other static files are the trickiest thing in this process as routes to those files set in your CSS may not work with the system you're integrating with. I don't have a great solve for this other than to adapt this tool to your projects needs rather than the other way around.
+
+That being said, the `/static` folder allows the simple copying of it's contents to the `/dist` file with no transformations. 
 ## Images
 
+As noted, static files and paths are tricky with this setup. In the case of images, you can either put them in the `/static` folder where they will be copied to the `/dist` folder, or, you can put them in `/src/images` where they will be shrunk with `imagemin`.
+
+However, most of the time, it's advisable to use placeholder images in this kit, and use SVGs as data-uris in the case of icons. 
+
 ## Javascript
-- make more bundles if you want
+
+Javascript files are processed by Gulp through the Gulp `webpack-stream` plugin. This allows basic Babel transpiling for older browsers while also allowing the convenience of installing modules from NPM. 
+
+Note that using this kit that certain things may not work via javascript and will have to be tested in your actual project (like analytics). 
+
+Core-js is included as a dependency, but note that you should only include these polyfills in your bundle if you actually need them. 
+
+Webpack settings are controlled via a `webpack.config.js` in the root of this project. There you will note the entrypoints of `library.js` and `uikit.js`. However, you can always add more if you want to split up your code by adding entry point files in `/src/js` and then adding them to this config file (they'll need to be included near the closing body tag of the main templates and any pages you make). 
+
+Note that by default JS builds are for production regardless of whether you run the `build` or the `dev` commands.
