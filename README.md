@@ -66,7 +66,9 @@ Note that the styles do require a different command for production builds as not
 
 Webfonts and other static files are the trickiest thing in this process as routes to those files set in your CSS may not work with the system you're integrating with. I don't have a great solve for this other than to adapt this tool to your projects needs rather than the other way around.
 
-That being said, the `/static` folder allows the simple copying of it's contents to the `/dist` file with no transformations. 
+That being said, the `/static` folder allows the simple copying of it's contents to the `/dist` file with no transformations. You might do well do make the /static folder mirror your project. 
+
+If paths end up being a problem, it can perhaps be solved by using [Gulp Pipe](https://gulpjs.com/docs/en/getting-started/working-with-files/) functions to exercise greater control of copying of files in your build process. 
 ## Images
 
 As noted, static files and paths are tricky with this setup. In the case of images, you can either put them in the `/static` folder where they will be copied to the `/dist` folder, or, you can put them in `/src/images` where they will be shrunk with `imagemin`.
