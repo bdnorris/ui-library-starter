@@ -10,8 +10,10 @@ if (panelControl && panel) {
 		panel.classList.toggle('active')
 		if (panelControl.getAttribute('aria-expanded') === 'true') {
 			panelControl.setAttribute('aria-expanded', 'false')
+			panelControl.setAttribute('aria-label', 'Open Menu')
 		} else {
 			panelControl.setAttribute('aria-expanded', 'true')
+			panelControl.setAttribute('aria-label', 'Close Menu')
 		}
 	})
 }
