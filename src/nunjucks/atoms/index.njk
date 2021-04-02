@@ -1,11 +1,28 @@
 {% extends "template.njk" %}
 
+{% set atoms = [
+	{
+		title: "Basic Button",
+		reversed: false,
+		file: "_atoms/_button.njk"
+	},
+	{
+		title: "Link Button",
+		reversed: true,
+		file: "_atoms/_button-link.njk"
+	}
+] 
+%}
+
 {% block body %}
 	<h1>Atoms</h1>
+	<h2>Buttons</h2>
+	{% for atom in atoms %}
 	<article class="component">
-		<h2>Button</h2>
-		<div class="component__component">
-			{% include "_atoms/_button.njk" %}
+		<h3>{{ atom.title }}</h3>
+		<div class="component__component {% if atom.reversed %}component__component--reversed{% endif %}">
+			{% include atom.file %}
 		</div>
 	</article>
+	{% endfor %}
 {% endblock %}

@@ -1,11 +1,23 @@
 {% extends "template.njk" %}
 
+{% set organisms = [
+	{
+		title: "Header, P, and Button",
+		reversed: false,
+		file: "_organisms/_first-component.njk"
+	}
+] 
+%}
+
 {% block body %}
 	<h1>Organisms</h1>
+	<h2>General</h2>
+	{% for organism in organisms %}
 	<article class="component">
-		<h2>Header, P, and Button</h2>
-		<div class="component__component">
-			{% include "_organisms/_first-component.njk" %}
+		<h3>{{ organism.title }}</h3>
+		<div class="component__component {% if organism.reversed %}component__component--reversed{% endif %}">
+			{% include organism.file %}
 		</div>
 	</article>
+	{% endfor %}
 {% endblock %}

@@ -1,11 +1,23 @@
 {% extends "template.njk" %}
 
+{% set molecules = [
+	{
+		title: "Paragraph and Button",
+		reversed: false,
+		file: "_molecules/_molecule.njk"
+	}
+] 
+%}
+
 {% block body %}
 	<h1>Molecules</h1>
+	<h2>General</h2>
+	{% for molecule in molecules %}
 	<article class="component">
-		<h2>Paragraph and Button</h2>
-		<div class="component__component">
-			{% include "_molecules/_molecule.njk" %}
+		<h3>{{ molecule.title }}</h3>
+		<div class="component__component {% if molecule.reversed %}component__component--reversed{% endif %}">
+			{% include molecule.file %}
 		</div>
 	</article>
+	{% endfor %}
 {% endblock %}
