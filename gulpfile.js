@@ -89,7 +89,7 @@ gulp.task("static", function() {
 })
 
 // Static Server + watching all our files
-gulp.task("watch", function() {
+gulp.task("watch", function () {
   browserSync.init({
     injectChanges: false,
     port: 3002,
@@ -98,13 +98,18 @@ gulp.task("watch", function() {
     }
   });
 
-  gulp.watch(path.sass, gulp.series("sass")).on("change", browserSync.reload);
-  gulp.watch(path.nunjucks.watch, gulp.series("nunjucks")).on("change", browserSync.reload);
-  gulp.watch(path.js, gulp.series("js")).on("change", browserSync.reload);
-  gulp.watch(path.images, gulp.series("images")).on("change", browserSync.reload);
+  gulp.watch(path.sass, gulp.series("sass", "reload"))
+  gulp.watch(path.nunjucks.watch, gulp.series("nunjucks", "reload"))
+  gulp.watch(path.js, gulp.series("js", "reload"))
+  gulp.watch(path.images, gulp.series("images", "reload"))
 });
 
-gulp.task("clean", function() {
+gulp.task("reload", function (done) {
+  browserSync.reload();
+  done();
+});
+
+gulp.task("clean", function () {
   return gulp.src("./dist", { read: false, allowEmpty: true }).pipe(clean());
 });
 
