@@ -1,19 +1,17 @@
-button {
+button.button {
   @include button-reset;
+}
+
+a.button {
+  text-decoration: none;
+}
+
+button.button, a.button {
   background-color: $clickable;
+  display: inline-block;
   font-size: 1.2em;
   padding: 0.5em 1em;
   color: white;
   border-radius: 0.25em;
-}
-
-.button {
   line-height: 1;
-}
-
-button.button {
-
-}
-a.button {
-  text-decoration: none;
 }
