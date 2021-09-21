@@ -1,5 +1,5 @@
 const gulp = require("gulp");
-const sass = require("gulp-sass");
+const sass = require('gulp-sass')(require('sass'));
 const postcss = require("gulp-postcss");
 const sourcemaps = require("gulp-sourcemaps");
 const autoprefixer = require("autoprefixer");
@@ -11,8 +11,6 @@ const webpackStream = require("webpack-stream");
 const webpackConfig = require("./webpack.config.js"); // webpack config file in root
 const clean = require("gulp-clean");
 const nunjucks = require('gulp-nunjucks');
-
-sass.compiler = require('node-sass');
 
 const path = {
   sass: "src/scss/**/*.scss",
